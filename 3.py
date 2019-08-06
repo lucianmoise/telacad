@@ -14,37 +14,37 @@ def factorial(j):
     v = 1
     for z in range(1, j + 1):
         v = v * z
-    a.append(v)  # nu-l adauga
+    return v
 
 
 if __name__ == '__main__':
 
-    # pool_size = len(t)
-    # pool = multiprocessing.Pool(processes=pool_size, initializer=factorial)
-    # print(list(t))
-    # inputs = list(t)
-    # a = pool.map(factorial, inputs)
-    # pool.close()
-
-    for i in t:
-        p = multiprocessing.Process(target=factorial, args=(i,))
-        mp.append(p)
-        p.start()
-    [y.join() for y in mp]
+    pool_size = len(t)
+    pool = multiprocessing.Pool(processes=pool_size)
+    inputs = list(t)
+    a = pool.map(factorial, inputs)
+    pool.close()
 
     end = time.perf_counter()
 
     print("Factorial de numerele respective au fost generate in {}".format(end-start))
 
+
     start = time.perf_counter()
 
-    for i in zip(t, a):
+    # def writefile(filename):
+    #     with open(filename) + ".txt", 'w') as file:
+    #        file.write(str([1]))
+    #
+    #
+    # for i in zip(t, a):
+    #     p = multiprocessing.Process(target=factorial, args=(i,))
+    #     mp.append(p)
+    #     p.start()
 
-       with open(str(i[0]) + ".txt", 'w') as file:
 
-           file.write(str(i[1]))
 
-    end = time.perf_counter()
+    # end = time.perf_counter()
 
     print(len(a))
 
